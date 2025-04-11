@@ -71,7 +71,9 @@ a {
     display: flex; /* Loại bỏ hiện tượng Margin Collapse */
     flex-direction: column; /* Tránh các đối tượng mới trong header bị ngang lên -> đổi thành chiều dọc */
     background: #e6f0ff;
-    height: 100vh; /* Tại lần đầu nhìn thấy của trang nên để 100vh để tránh bị thừa/thiếu */
+    height: calc(
+        100vh - 90px
+    ); /* Tại lần đầu nhìn thấy của trang nên để 100vh để tránh bị thừa/thiếu */
 }
 
 /* Navigation bar */
@@ -118,7 +120,7 @@ a {
 /* Hero */
 
 .hero {
-    /* margin-top: 130px; Khoảng cách từ nav (tính từ button) -> hero */
+    margin-top: 130px; /* Khoảng cách từ nav (tính từ button) -> hero */
     /* padding-top: 130px; Cách 1 để không margin Collapse */
 }
 
