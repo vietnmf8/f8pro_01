@@ -1,0 +1,669 @@
+* {
+    /* Đã có trong reset CSS */
+    /* padding: 0;
+    margin: 0; */
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #0f1b4c;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Common (Thành phần dùng chung) */
+
+.content {
+    width: 1110px;
+    max-width: calc(
+        100% - 48px
+    ); /* Khi co kéo trình duyệt vẫn giữ nguyên được độ rộng của content */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn {
+    display: inline-block;
+    padding: 18px 16px; /* Đặt padding trên dưới thay vì height = 50px (Không có thuộc tính text căn giữa dọc) */
+    min-width: 98px; /* Đặt min-width để có chiều rộng tối thiểu nếu như sau này có ít/nhiều ký tự sẽ tự linh hoạt thay vì dùng width */
+    border-radius: 12px;
+    background: var(--primary-color);
+    color: #fff;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.line-clamp {
+    display: -webkit-box;
+    /* -webkit-line-clamp: var(--line-clamp, 2); */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Header _______________________________________________________________________________________ */
+
+.header {
+    position: relative;
+    background: #e6f0ff;
+    height: 100vh; /* Tại lần đầu nhìn thấy của trang nên để 100vh để tránh bị thừa/thiếu */
+}
+
+/* Navigation bar */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    padding-top: 38px; /* Thay vì sử dụng margin-top sẽ bị đẩy cả nền xuống (Margin-Collapse) */
+}
+
+.navbar ul {
+    display: flex; /* Không nên để các thẻ li có display: inline-block vì sẽ tạo ra khoảng trắng bởi trong html có xuống hàng */
+    margin-left: 50px; /* 64px - 14px (padding của thẻ a) */
+}
+
+.navbar ul a {
+    color: #4f5361;
+    font-size: 1.4rem;
+    font-weight: 500;
+    padding: 8px 14px; /* Đặt padding cho thẻ inline (Vẫn có padding nhưng không bị va chạm) để tăng diện tích bấm cho người dùng thay vì sử dụng margin */
+}
+
+.navbar ul a:hover {
+    text-decoration: underline;
+}
+
+.navbar .actions {
+    margin-left: auto; /* kết hợp margin với flex */
+}
+
+.navbar .action-link {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.navbar .action-btn {
+    padding: 13px 16px;
+    margin-left: 18px;
+    border-radius: 8px;
+}
+
+/* Hero */
+
+.hero {
+    margin-top: 130px; /* Khoảng cách từ nav (tính từ button) -> hero */
+}
+
+.hero .info {
+    width: 51%; /* (Thay vì đặt cứng là 559px -> Đặt tỉ lệ so với thẻ cha là thẻ content) */
+}
+
+.hero .sub-title {
+    color: #687690;
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: normal; /* VD: 27px  (Không nên để tuyệt đối, mà nên để tỉ lệ với font-size: 
+    27px/18px(1.8rem)=1.5) */
+    letter-spacing: 0.01em; /* -> Chuyển đổi sang tỉ lệ để phụ thuộc vào font-size của chính nó:
+    0.18px/18px=0.01em */
+}
+
+.hero .title {
+    margin-top: 8px;
+    color: #000336;
+    font-size: 6.3rem;
+    font-weight: 700;
+    line-height: 1.1875; /* 118.75% */
+}
+
+.hero .desc {
+    margin-top: 30px;
+    color: #5a6473;
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1.77778; /* 177.778% */
+    /* text-transform: capitalize; Viết hoa chữ cái đầu -> Tự sửa trong html */
+}
+
+.hero .hero-cta {
+    margin-top: 40px;
+    min-width: 170px; /* Thích nghi được khi nội dung sau này sửa dài hơn */
+    padding: auto 16px;
+}
+
+.hero .hero-img {
+    position: absolute;
+    bottom: 0;
+    right: calc((100vw - 1110px) / 2 - 100px);
+}
+
+/* Clients _______________________________________________________________________________________ */
+
+.clients {
+    margin-top: 79px;
+    padding: 43px 0 64px;
+}
+
+.clients .row {
+    display: flex;
+    justify-content: space-between; /* Đẩy các phần tử con xa nhau nhất có thể, cách 2 là margin-left: auto với phần tử stars */
+}
+
+.clients .row-desc {
+    margin-top: 23px;
+}
+
+.clients .desc {
+    color: #7d8589;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.25; /* 125% */
+}
+
+.clients .images {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 96px; /* Là khoảng cách từ client-2 (Vì client-2 có chiều cao lớn nhất) */
+}
+
+/* Guides _______________________________________________________________________________________ */
+.guides {
+    margin-top: 40px; /* Khoảng cách so với client-2 (Vì nó có chiều cao lớn nhất) */
+    padding: 93px 0 79px;
+}
+
+.guides .sub-title {
+    color: #000339;
+    position: relative;
+    font-weight: 600;
+    font-size: 3.5rem;
+    line-height: 1;
+    letter-spacing: 0%;
+    text-align: center;
+}
+
+.guides .sub-title::before {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    content: "";
+    display: inline-block;
+    background-color: #000339;
+    width: 41px;
+    height: 4px;
+    transform: translateX(-50%);
+    border-radius: 12px;
+}
+
+.guides .desc {
+    width: 459px;
+    max-width: 100%; /* Tránh trường hợp độ rộng của trình duyệt nhỏ hơn độ rộng của thẻ */
+    margin: 20px auto 0; /* Margin trái phải auto để căn nội dung ra giữa */
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.875;
+    text-align: center;
+    color: #5a6473;
+}
+
+.list-guide {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+.guide-item {
+    margin: 0 70px;
+    text-align: center; /* Căn các thẻ inline ra giữa */
+}
+
+.guide-item .title {
+    margin-top: 26px;
+    color: #3b3c45;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.1; /* 110% */
+}
+
+.guide-item .link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #0689ff;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.guide-item .arrow {
+    margin-left: 6px;
+}
+
+.guide-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.guide-cta .btn {
+    min-width: 170px;
+}
+
+/* Featured Properties _______________________________________________________________________________________ */
+.featured {
+    margin-top: 41px;
+    padding: 110px 0;
+    background-color: #f5fafe;
+}
+
+.featured .sub-title {
+    color: #000339;
+    font-size: 3.5rem;
+    font-weight: 600;
+    line-height: 1; /* 100% */
+}
+
+.featured .row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.featured .desc {
+    color: #5a6473;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.875; /* 187.5% */
+}
+
+.featured .link {
+    display: flex;
+    align-items: center;
+    color: #0689ff;
+    text-align: right; /* Vì đã có justify-content: space-between; */
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: normal;
+}
+/* Cách để căn gióng arrow vào giữa */
+/*Cách 1*/
+/* .featured .link .arrow {
+    position: relative;
+    top: -2px;
+} */
+/*Cách 2 - display flex / align-items: center*/
+
+.featured .link .arrow {
+    margin-left: 8px;
+}
+
+.featured .list {
+    display: flex;
+    gap: 30px; /* Tạo khoảng cách giữa các item là 30px mà không bị khoảng cách đầu cuối */
+    margin-top: 70px;
+}
+
+.featured .item {
+    flex: 1;
+    background: #fff;
+    border-radius: 12px;
+    /* overflow: hidden; Ảnh đang bị tòi  ra ngoài thẻ cha -> overflow để ẩn nó đi thay vì dùng border-radius (Không nên dùng) */
+}
+
+.featured .item .thumb {
+    width: 100%; /* = 100% chiều rộng của các item */
+    height: 227px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.featured .item .body {
+    padding: 17px 20px 24px;
+}
+
+.featured .item .title a {
+    color: #000339;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.5; /* 150% */
+}
+
+.featured .item .desc {
+    /* --line-clamp: 3; */
+
+    margin-top: 11px;
+    color: #a3a6ab;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: normal;
+    word-break: break-all; /* Xuống hàng khi chạm giới hạn */
+}
+
+.featured .item .info {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.featured .item .icon {
+    margin-left: 23px;
+}
+
+.featured .item .icon:first-child {
+    margin-left: 0;
+}
+
+.featured .item .label {
+    margin-left: 8px;
+    color: #4d4d52;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1; /* 100% */
+    letter-spacing: 0.01em;
+}
+
+/* Featured Properties _______________________________________________________________________________________ */
+
+.stats {
+    margin-top: 75px;
+    padding: 50px 0;
+}
+
+.stats .content {
+    width: 1048px;
+}
+
+.stats .row {
+    display: flex;
+}
+
+.stats .img-block,
+.stats .info {
+    width: 50%;
+}
+
+.stats .img-block {
+    position: relative;
+}
+
+.stats .info {
+    padding: 79px 0 0 165px;
+}
+
+.stats-trend {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 239px;
+    padding: 45px 22px 40px;
+    border-radius: 0px 0px 12px 12px;
+    background: #fff;
+}
+
+.stats-trend .value {
+    color: #000339;
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1; /* 100% */
+    letter-spacing: 0.01em;
+}
+
+.stats-trend .icon {
+    margin-left: auto;
+}
+
+.stats-trend .desc {
+    margin-top: 8px;
+    color: #a7a7a7;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.5; /* 150% */
+}
+
+.stats-trend .separate {
+    margin-top: 25px;
+    height: 1.2px; /* Không cần đặt width */
+    background: #e9e9e9;
+}
+
+.stats .avatar-block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 14px; /* 16 - Khoảng cách giữa các hàng (row) | 14 - Khoảng cách giữa các cột (column) */
+    margin-top: 26px;
+}
+
+.stats .avatar-group {
+    display: flex;
+}
+
+.stats .avatar {
+    width: 16px;
+    height: 16px;
+    margin-left: -3px;
+    object-fit: cover;
+    border-radius: 50%;
+    /* Thuộc tính tác động lên thẻ div .avatar-1 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* line-height: 16px; Căn giữa dọc | 16px là giống chiều cao của .avatar */
+    /* text-align: center; */
+    background-color: var(--bg-color, #fff);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 450;
+    letter-spacing: -0.02em;
+}
+
+.stats .avatar:first-child {
+    margin-left: 0;
+}
+
+.stats .img-block .image {
+    display: block;
+    margin-left: auto;
+    width: 400px;
+    height: 460px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.stats .sub-title {
+    position: relative;
+    width: 269px;
+    color: #000339;
+    font-size: 3.5rem;
+    font-weight: 600;
+    line-height: 1.29; /* 128.571% */
+}
+
+.stats .sub-title::before {
+    position: absolute;
+    left: 0;
+    top: -10px;
+    content: "";
+    display: block;
+    width: 41px;
+    height: 4px;
+    border-radius: 12px;
+    background: #000339;
+}
+
+.stats .info .desc {
+    margin-top: 20px;
+    width: 309px;
+    color: #5a6473;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.88; /* 187.5% */
+}
+
+.stats .row-qty {
+    padding: 0 32px;
+    justify-content: space-between;
+    margin-top: 110px;
+}
+
+.stats .qty {
+    color: #000;
+    font-size: 6.4rem;
+    font-weight: 600;
+    line-height: 1; /* 100% */
+}
+
+.stats .qty-desc {
+    margin-top: 24px;
+    color: #7b8087;
+    font-size: 1.8;
+    font-weight: 500;
+    line-height: normal;
+}
+
+/* Subscription _______________________________________________________________________________________ */
+
+.subscription {
+    margin-top: 90px;
+}
+
+.subscription .body {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 370px;
+    border-radius: 20px;
+    background: #063183;
+}
+
+.subscription .info {
+    width: 671px;
+    /* max-width: 100%; */
+    padding: 0 80px;
+}
+
+.subscription .sub-title {
+    color: #fff;
+    font-size: 3.5rem;
+    font-weight: 600;
+    line-height: 1.5; /* 100% */
+}
+
+.subscription .desc {
+    margin-top: 15px;
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.87; /* 187.5% */
+    opacity: 0.75;
+}
+
+.subscription .btn {
+    margin-top: 20px;
+    min-width: 151px;
+    background-color: #fff;
+    color: #002366;
+}
+
+.subscription .image {
+    position: absolute;
+    bottom: 0;
+    right: 221px;
+}
+
+/* Footer _______________________________________________________________________________________ */
+
+.footer {
+    margin-top: 55px;
+    padding: 50px 0 58px;
+}
+
+.footer .row {
+    display: flex;
+}
+
+.footer .row-top {
+    gap: 185px;
+}
+
+.footer .heading {
+    color: #1c1c1d;
+    font-family: "Lato", sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.footer .list,
+.footer .desc {
+    margin-top: 42px;
+}
+
+.footer .item {
+    margin-top: 18px; /* Margin Collapse */
+}
+
+.footer .item a,
+.footer .desc {
+    color: #7a7a7e;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.footer .desc {
+    white-space: normal;
+    color: #7a7a7e;
+    font-size: 1.6;
+    font-weight: 400;
+    line-height: 1.75; /* 175% */
+}
+
+.footer .social {
+    margin-top: 40px;
+    display: flex;
+}
+
+.footer .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+}
+
+.footer .social-link:hover {
+    background-color: #ebebeb;
+    border-radius: 3px;
+}
+
+.footer .row-bottom {
+    margin-top: 81px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer .copyright {
+    color: #c2c2c2;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: normal;
+}
