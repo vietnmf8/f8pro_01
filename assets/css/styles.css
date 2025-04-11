@@ -9,6 +9,11 @@
     --primary-color: #0f1b4c;
 }
 
+html,
+body {
+    scroll-behavior: smooth; /* Hiệu ứng cuộn mượt mà */
+}
+
 html {
     font-size: 62.5%;
 }
