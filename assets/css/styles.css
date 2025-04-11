@@ -661,11 +661,16 @@ a {
     justify-content: center;
     width: 28px;
     height: 28px;
+    border-radius: 3px;
+    background-color: #f9f9f9;
+}
+/* Cách trái 16px với những .social-link nằm ngay sau .social-link */
+.footer .social-link + .social-link {
+    margin-left: 16px;
 }
 
 .footer .social-link:hover {
     background-color: #ebebeb;
-    border-radius: 3px;
 }
 
 .footer .row-bottom {
