@@ -58,8 +58,18 @@ a {
 
 /* Header _______________________________________________________________________________________ */
 
-.header {
+.fixed-header {
+    background: #e6f0ff;
+    padding-top: 26px;
+    position: sticky;
+    top: -26px; /* Tại vị trí -26px -> sticky */
+    z-index: 1;
+}
+
+.hero-wrap {
     position: relative;
+    display: flex; /* Loại bỏ hiện tượng Margin Collapse */
+    flex-direction: column; /* Tránh các đối tượng mới trong header bị ngang lên -> đổi thành chiều dọc */
     background: #e6f0ff;
     height: 100vh; /* Tại lần đầu nhìn thấy của trang nên để 100vh để tránh bị thừa/thiếu */
 }
@@ -69,7 +79,8 @@ a {
 .navbar {
     display: flex;
     align-items: center;
-    padding-top: 38px; /* Thay vì sử dụng margin-top sẽ bị đẩy cả nền xuống (Margin-Collapse) */
+    /* padding-top: 38px; Thay vì sử dụng margin-top sẽ bị đẩy cả nền xuống (Margin-Collapse) */
+    padding: 12px 0;
 }
 
 .navbar ul {
@@ -107,7 +118,8 @@ a {
 /* Hero */
 
 .hero {
-    margin-top: 130px; /* Khoảng cách từ nav (tính từ button) -> hero */
+    /* margin-top: 130px; Khoảng cách từ nav (tính từ button) -> hero */
+    /* padding-top: 130px; Cách 1 để không margin Collapse */
 }
 
 .hero .info {
