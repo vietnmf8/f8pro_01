@@ -115,6 +115,7 @@ a {
 }
 
 .hero .sub-title {
+    /* Sửa lỗi màu */
     color: #687690;
     font-size: 1.8rem;
     font-weight: 500;
